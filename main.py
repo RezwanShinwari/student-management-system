@@ -17,6 +17,20 @@ def add_student():
     print("Student added successfully!")
 
 
+def view_students():
+    if not students:
+        print("No students found.")
+        return
+
+    print("\n===== Students =====")
+
+    for i, student in enumerate(students, start=1):
+        print(f"{i}. Name: {student['name']}")
+        print(f"   Age: {student['age']}")
+        print(f"   Grade: {student['grade']}")
+        print("--------------------")
+
+
 def main():
     print("==============================")
     print("   STUDENT MANAGEMENT SYSTEM")
@@ -30,6 +44,9 @@ def main():
 
     if choice == "1":
         add_student()
+
+    elif choice == "2":
+        view_students()
 
 
 if __name__ == "__main__":
