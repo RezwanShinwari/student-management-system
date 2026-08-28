@@ -1,4 +1,22 @@
+import json
+
 students = []
+
+
+def save_students():
+    with open("students.json", "w") as file:
+        json.dump(students, file, indent=4)
+
+
+def load_students():
+    global students
+
+    try:
+        with open("students.json", "r") as file:
+            students = json.load(file)
+
+    except FileNotFoundError:
+        students = []
 
 
 def add_student():
@@ -13,6 +31,7 @@ def add_student():
     }
 
     students.append(student)
+    save_students()
 
     print("Student added successfully!")
 
@@ -50,6 +69,8 @@ def search_student():
 
 
 def main():
+    load_students()
+
     while True:
         print("\n==============================")
         print("   STUDENT MANAGEMENT SYSTEM")
